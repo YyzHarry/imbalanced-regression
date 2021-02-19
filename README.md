@@ -1,9 +1,6 @@
 # Delving into Deep Imbalanced Regression
 
-This repository contains the implementation code for paper: <br>
-__Delving into Deep Imbalanced Regression__ <br>
-_arXiv preprint arXiv:xxx_ <br>
-[[arXiv](https://arxiv.org/abs/xxx)] [[Paper](https://arxiv.org/pdf/xxx.pdf)]
+This repository contains the implementation code for paper: [Delving into Deep Imbalanced Regression](https://arxiv.org/abs/2102.09554).
 
 <p align="center">
     <img src="dir.png" width="450"> <br>
@@ -14,11 +11,11 @@ _arXiv preprint arXiv:xxx_ <br>
 ## Beyond Imbalanced Classification: Brief Introduction for DIR
 Existing techniques for learning from imbalanced data focus on targets with __categorical__ indices, i.e., the targets are different classes. However, many real-world tasks involve __continuous__ and even infinite target values. We systematically investigate _Deep Imbalanced Regression (DIR)_, which aims to learn continuous targets from natural imbalanced data, deal with potential missing data for certain target values, and generalize to the entire target range.
 
-We curate and benchmark large-scale DIR datasets for common real-world tasks in _computer vision_, _natural language processing_, and _healthcare_ domains, ranging from single-value prediction such as age or health condition score, to dense-value prediction such as depth.
+We curate and benchmark large-scale DIR datasets for common real-world tasks in _computer vision_, _natural language processing_, and _healthcare_ domains, ranging from single-value prediction such as age, text similarity score, health condition score, to dense-value prediction such as depth.
 
 
 ## Updates
-- __[02/18/2021]__ [ArXiv version](https://arxiv.org/abs/xxx) posted. The code is currently under cleaning. Please stay tuned for updates.
+- __[02/18/2021]__ [ArXiv version](https://arxiv.org/abs/2102.09554) posted. The code is currently under cleaning. Please stay tuned for updates.
 
 
 ## Citation
@@ -26,7 +23,7 @@ We curate and benchmark large-scale DIR datasets for common real-world tasks in 
 @article{yang2021delving,
   title={Delving into Deep Imbalanced Regression},
   author={Yang, Yuzhe and Zha, Kaiwen and Chen, Ying-Cong and Wang, Hao and Katabi, Dina},
-  journal={arXiv preprint arXiv:xxx},
+  journal={arXiv preprint arXiv:2102.09554},
   year={2021}
 }
 ```
