@@ -1,9 +1,13 @@
 # Delving into Deep Imbalanced Regression
 
-This repository contains the implementation code for paper: [Delving into Deep Imbalanced Regression](https://arxiv.org/abs/2102.09554).
+This repository contains the implementation code for paper: <br>
+__[Delving into Deep Imbalanced Regression](https://arxiv.org/abs/2102.09554)__ <br>
+Yuzhe Yang, Kaiwen Zha, Ying-Cong Chen, Hao Wang, and Dina Katabi <br>
+_38th International Conference on Machine Learning (ICML 2021), **Long Talk**_ <br>
+[Project Page] [[Paper](https://arxiv.org/abs/2102.09554)] [Video]
 
 <p align="center">
-    <img src="dir.png" width="450"> <br>
+    <img src="teaser/overview.gif" width="450"> <br>
 <b>Deep Imbalanced Regression (DIR)</b> aims to learn from imbalanced data with continuous targets, <br> tackle potential missing data for certain regions, and generalize to the entire target range.
 </p>
 
@@ -19,6 +23,7 @@ We curate and benchmark large-scale DIR datasets for common real-world tasks in 
 
 
 ## Citation
+If you find this code or idea useful, please cite our work:
 ```bib
 @article{yang2021delving,
   title={Delving into Deep Imbalanced Regression},
@@ -27,3 +32,7 @@ We curate and benchmark large-scale DIR datasets for common real-world tasks in 
   year={2021}
 }
 ```
+
+
+## Contact
+If you have any questions, feel free to contact us through email (yuzhe@mit.edu & kzha@mit.edu) or Github issues. Enjoy!
