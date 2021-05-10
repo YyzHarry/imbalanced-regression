@@ -1,6 +1,5 @@
-## NYUD2-DIR
-
-### Installation
+# NYUD2-DIR
+## Installation
 
 #### Prerequisites
 
@@ -10,7 +9,7 @@
 python download_nyud2.py
 ```
 
-2. (Optionally) We have provided required meta files `nyu2_train_FDS_subset.csv` and `test_balanced_mask.npy`  for efficient FDS feature statistics computation and balanced test set mask in folder `./data`. To reproduce the results in the paper, please directly use these two files. If you want to try different FDS computation subsets and balanced test set masks, you can run
+2. __(Optional)__ We have provided required meta files `nyu2_train_FDS_subset.csv` and `test_balanced_mask.npy`  for efficient FDS feature statistics computation and balanced test set mask in folder `./data`. To reproduce the results in the paper, please directly use these two files. If you want to try different FDS computation subsets and balanced test set masks, you can run
 
 ```bash
 python preprocess_nyud2.py
@@ -21,7 +20,7 @@ python preprocess_nyud2.py
 - PyTorch (>= 1.2, tested on 1.6)
 - numpy, pandas, scipy, tqdm, matplotlib, PIL, gdown, tensorboardX
 
-### Code Overview
+## Code Overview
 
 #### Main Files
 
@@ -45,7 +44,7 @@ For `test.py`:
 
 - `--eval_model`: path to resume checkpoint (only for evaluation)
 
-### Getting Started
+## Getting Started
 
 #### Train a vanilla model
 
@@ -98,18 +97,19 @@ python train.py --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 python train.py --reweight inverse --lds --lds_kernel gaussian --lds_ks 5 --lds_sigma 2 --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 ```
 
-#### Evaluate only 
+#### Evaluate a trained checkpoint
 
 ```bash
 python test.py --data_dir <path_to_data_dir> --eval_model <path_to_evaluation_ckpt>
 ```
 
-### Reproduced Benchmarks and Model Zoo
+## Reproduced Benchmarks and Model Zoo
 
-Metric: RMSE
+We provide below reproduced results on NYUD2-DIR (base method `Vanilla`, metric `RMSE`).
+Note that some models could give **better** results than the reported numbers in the paper.
 
 |   Model   | Overall | Many-Shot | Medium-Shot | Few-Shot | Download |
 | :-------: | :-----: | :-------: | :---------: | :------: | :------: |
-|    LDS    |  1.387  |   0.671   |    0.913    |  1.954   |  model   |
-|    FDS    |  1.442  |   0.615   |    0.940    |  2.059   |  model   |
-| LDS + FDS |  1.301  |   0.731   |    0.832    |  1.799   |  model   |
+|    LDS    |  1.387  |   0.671   |    0.913    |  1.954   | [model](https://drive.google.com/file/d/1RgQx-nreiJ-chH0887xCy7gxah-zrrEO/view?usp=sharing) |
+|    FDS    |  1.442  |   0.615   |    0.940    |  2.059   | [model](https://drive.google.com/file/d/1FEKzBzMPaGubmv9iK4BP6LJng44Mhc7s/view?usp=sharing) |
+| LDS + FDS |  1.301  |   0.731   |    0.832    |  1.799   | [model](https://drive.google.com/file/d/1QlZJOPYSyRRFqa1Q-y7-JlTDABiQZJUF/view?usp=sharing) |

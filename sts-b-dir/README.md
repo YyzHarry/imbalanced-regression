@@ -1,6 +1,5 @@
-## STS-B-DIR
-
-### Installation
+# STS-B-DIR
+## Installation
 
 #### Prerequisites
 
@@ -10,7 +9,7 @@
 python glove/download_glove.py
 ```
 
-2. (Optionally) We have provided both original STS-B dataset and our created balanced STS-B-DIR dataset in folder `./glue_data/STS-B`. To reproduce the results in the paper, please use our created STS-B-DIR dataset. If you want to try different balanced splits, you can delete the folder `./glue_data/STS-B` and run
+2. __(Optional)__ We have provided both original STS-B dataset and our created balanced STS-B-DIR dataset in folder `./glue_data/STS-B`. To reproduce the results in the paper, please use our created STS-B-DIR dataset. If you want to try different balanced splits, you can delete the folder `./glue_data/STS-B` and run
 
 ```bash
 python glue_data/create_sts.py
@@ -29,7 +28,7 @@ conda install pytorch=0.4.1 cuda92 -c pytorch
 pip install -r requirements.txt
 ```
 
-### Code Overview
+## Code Overview
 
 #### Main Files
 
@@ -50,7 +49,7 @@ pip install -r requirements.txt
 - `--val_interval`: number of iterations between validation checks
 - `--patience`: patience (number of validation checks) for early stopping
 
-### Getting Started
+## Getting Started
 
 #### Train a vanilla model
 
@@ -116,18 +115,19 @@ python train.py --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 python train.py --reweight inverse --lds --lds_kernel gaussian --lds_ks 5 --lds_sigma 2 --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 ```
 
-#### Evaluate only 
+#### Evaluate a trained checkpoint
 
 ```bash
 python train.py [...evaluation model arguments...] --evaluate --eval_model <path_to_evaluation_ckpt>
 ```
 
-### Reproduced Benchmarks and Model Zoo
+## Reproduced Benchmarks and Model Zoo
 
-Metric: MSE
+We provide below reproduced results on STS-B-DIR (base method `Vanilla`, metric `MSE`).
+Note that some models could give **better** results than the reported numbers in the paper.
 
 |   Model   | Overall | Many-Shot | Medium-Shot | Few-Shot | Download |
 | :-------: | :-----: | :-------: | :---------: | :------: | :------: |
-|    LDS    |  0.914  |   0.819   |    1.319    |   0.955  |  model   |
-|    FDS    |  0.916  |   0.875   |    1.027    |   1.086  |  model   |
-| LDS + FDS |  0.907  |   0.802   |    1.363    |   0.942  |  model   |
+|    LDS    |  0.914  |   0.819   |    1.319    |   0.955  | [model](https://drive.google.com/file/d/1CVyycq0OMgD9N9gJX5UDcfpRaJdZBjzo/view?usp=sharing) |
+|    FDS    |  0.916  |   0.875   |    1.027    |   1.086  | [model](https://drive.google.com/file/d/13e-1kd-KQrzFFVrJp1FeNDIBwUp3qtYx/view?usp=sharing) |
+| LDS + FDS |  0.907  |   0.802   |    1.363    |   0.942  | [model](https://drive.google.com/file/d/1kb_GV2coJRK_o9OxnMcxchq1EKOcpx-h/view?usp=sharing) |

@@ -1,11 +1,11 @@
-## AgeDB-DIR
-### Installation
+# AgeDB-DIR
+## Installation
 
 #### Prerequisites
 
 1. Download AgeDB dataset from [here](https://ibug.doc.ic.ac.uk/resources/agedb/) and extract the zip file (you may need to contact the authors of AgeDB dataset for the zip password) to folder `./data` 
 
-2. (Optionally) We have provided required AgeDB-DIR meta file `agedb.csv` to set up balanced val/test set in folder `./data`. To reproduce the results in the paper, please directly use this file. If you want to try different balanced splits, you can generate it using
+2. __(Optional)__ We have provided required AgeDB-DIR meta file `agedb.csv` to set up balanced val/test set in folder `./data`. To reproduce the results in the paper, please directly use this file. If you want to try different balanced splits, you can generate it using
 
 ```bash
 python data/create_agedb.py
@@ -18,7 +18,7 @@ python data/preprocess_agedb.py
 - tensorboard_logger
 - numpy, pandas, scipy, tqdm, matplotlib, PIL
 
-### Code Overview
+## Code Overview
 
 #### Main Files
 
@@ -38,7 +38,7 @@ python data/preprocess_agedb.py
 - `--evaluate`: evaluate only flag
 - `--pretrained`: path to load backbone weights for regressor re-training (RRT)
 
-### Getting Started
+## Getting Started
 
 #### Train a vanilla model
 
@@ -102,18 +102,19 @@ python train.py --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 python train.py --reweight sqrt_inv --lds --lds_kernel gaussian --lds_ks 5 --lds_sigma 2 --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 ```
 
-#### Evaluate only 
+#### Evaluate a trained checkpoint
 
 ```bash
 python train.py [...evaluation model arguments...] --evaluate --resume <path_to_evaluation_ckpt>
 ```
 
-### Reproduced Benchmarks and Model Zoo
+## Reproduced Benchmarks and Model Zoo
 
-Metric: MAE
+We provide below reproduced results on AgeDB-DIR (base method `SQINV`, metric `MAE`).
+Note that some models could give **better** results than the reported numbers in the paper.
 
 |   Model   | Overall | Many-Shot | Medium-Shot | Few-Shot | Download |
 | :-------: | :-----: | :-------: | :---------: | :------: | :------: |
-|    LDS    |  7.67   |   6.98    |    8.86     |  10.89   |  model   |
-|    FDS    |  7.69   |   7.11    |    8.86     |   9.98   |  model   |
-| LDS + FDS |  7.47   |   6.91    |    8.26     |  10.55   |  model   |
+|    LDS    |  7.67   |   6.98    |    8.86     |  10.89   | [model](https://drive.google.com/file/d/1CPDlcRCQ1EC4E3x9w955cmILSaVOlkyz/view?usp=sharing) |
+|    FDS    |  7.69   |   7.11    |    8.86     |   9.98   | [model](https://drive.google.com/file/d/1JmRS4V8zmmS9eschsBSmSeQjFWefYlib/view?usp=sharing) |
+| LDS + FDS |  7.47   |   6.91    |    8.26     |  10.55   | [model](https://drive.google.com/file/d/1N0nMdu-wuWoAOS1x_m-pnzHcAp61ajY9/view?usp=sharing) |

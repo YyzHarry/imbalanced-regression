@@ -1,5 +1,5 @@
-## IMDB-WIKI-DIR
-### Installation
+# IMDB-WIKI-DIR
+## Installation
 
 #### Prerequisites
 
@@ -9,7 +9,7 @@
 python download_imdb_wiki.py
 ```
 
-2. (Optionally) We have provided required IMDB-WIKI-DIR meta file `imdb_wiki.csv` to set up balanced val/test set in folder `./data`. To reproduce the results in the paper, please directly use this file. You can also generate it using
+2. __(Optional)__ We have provided required IMDB-WIKI-DIR meta file `imdb_wiki.csv` to set up balanced val/test set in folder `./data`. To reproduce the results in the paper, please directly use this file. You can also generate it using
 
 ```bash
 python data/create_imdb_wiki.py
@@ -22,7 +22,7 @@ python data/preprocess_imdb_wiki.py
 - tensorboard_logger
 - numpy, pandas, scipy, tqdm, matplotlib, PIL, wget
 
-### Code Overview
+## Code Overview
 
 #### Main Files
 
@@ -42,7 +42,7 @@ python data/preprocess_imdb_wiki.py
 - `--evaluate`: evaluate only flag
 - `--pretrained`: path to load backbone weights for regressor re-training (RRT)
 
-### Getting Started
+## Getting Started
 
 #### Train a vanilla model
 
@@ -106,18 +106,20 @@ python train.py --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 python train.py --reweight sqrt_inv --lds --lds_kernel gaussian --lds_ks 5 --lds_sigma 2 --fds --fds_kernel gaussian --fds_ks 5 --fds_sigma 2
 ```
 
-#### Evaluate only 
+#### Evaluate a trained checkpoint
 
 ```bash
 python train.py [...evaluation model arguments...] --evaluate --resume <path_to_evaluation_ckpt>
 ```
 
-### Reproduced Benchmarks and Model Zoo
+## Reproduced Benchmarks and Model Zoo
 
-Metric: MAE
+We provide below reproduced results on IMDB-WIKI-DIR (base method `SQINV`, metric `MAE`).
+Note that some models could give **better** results than the reported numbers in the paper.
+
 
 |   Model   | Overall | Many-Shot | Medium-Shot | Few-Shot | Download |
 | :-------: | :-----: | :-------: | :---------: | :------: | :------: |
-|    LDS    |         |           |             |          |  model   |
-|    FDS    |         |           |             |          |  model   |
-| LDS + FDS |         |           |             |          |  model   |
+|    LDS    |  7.87   |   7.31    |   12.45     |   22.60  | [model](https://drive.google.com/file/d/1HnGw1gs6UAlvbol4EulHX_Kqx_pwJZ70/view?usp=sharing) |
+|    FDS    |  7.66   |   7.06    |   12.60     |   22.37  | [model](https://drive.google.com/file/d/1H7_dDMn83-paFrcrEmOiDLZmoham4js9/view?usp=sharing) |
+| LDS + FDS |  7.68   |   7.07    |   12.79     |   21.85  | [model](https://drive.google.com/file/d/1C_YxpTW-rhCRIF4wnFShojp5ydAjFmHo/view?usp=sharing) |
