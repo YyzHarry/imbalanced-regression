@@ -1,13 +1,13 @@
 # Delving into Deep Imbalanced Regression
 
 This repository contains the implementation code for paper: <br>
-__[Delving into Deep Imbalanced Regression](https://arxiv.org/abs/2102.09554)__ <br>
-Yuzhe Yang, Kaiwen Zha, Ying-Cong Chen, Hao Wang, and Dina Katabi <br>
-_38th International Conference on Machine Learning (ICML 2021), **Long Talk**_ <br>
-[Project Page] [[Paper](https://arxiv.org/abs/2102.09554)] [Video]
+__Delving into Deep Imbalanced Regression__ <br>
+[Yuzhe Yang](http://www.mit.edu/~yuzhe/), [Kaiwen Zha](https://kaiwenzha.github.io/), [Ying-Cong Chen](https://yingcong.github.io/), [Hao Wang](http://www.wanghao.in/), [Dina Katabi](https://people.csail.mit.edu/dina/) <br>
+_38th International Conference on Machine Learning (ICML 2021), **Long Oral**_ <br>
+[Project Page] [[Paper](https://arxiv.org/abs/2102.09554)] [Video] [Blog]
 
 <p align="center">
-    <img src="teaser/overview.gif" width="450"> <br>
+    <img src="teaser/overview.gif" width="500"> <br>
 <b>Deep Imbalanced Regression (DIR)</b> aims to learn from imbalanced data with continuous targets, <br> tackle potential missing data for certain regions, and generalize to the entire target range.
 </p>
 
@@ -18,17 +18,43 @@ Existing techniques for learning from imbalanced data focus on targets with __ca
 We curate and benchmark large-scale DIR datasets for common real-world tasks in _computer vision_, _natural language processing_, and _healthcare_ domains, ranging from single-value prediction such as age, text similarity score, health condition score, to dense-value prediction such as depth.
 
 
+## Usage
+We separate the codebase for different datasets into different subfolders. Please go into the subfolders for more information (e.g., installation, dataset preparation, training, evaluation & models).
+
+#### __[IMDB-WIKI-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/imdb-wiki-dir)__ &nbsp;|&nbsp; __[AgeDB-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/agedb-dir)__ &nbsp;|&nbsp; __[NYUD2-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/nyud2-dir)__ &nbsp;|&nbsp; __[STS-B-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/sts-b-dir)__
+
+
+## Highlights
+__(1) :heavy_check_mark: New Task:__ Deep Imbalanced Regression (DIR)
+
+__(2) :heavy_check_mark: New Techniques:__
+
+| ![image](teaser/lds.gif) | ![image](teaser/fds.gif) |
+| :-: | :-: |
+| Label distribution smoothing (LDS) | Feature distribution smoothing (FDS) |
+
+__(3) :heavy_check_mark: New Benchmarks:__ <br>
+- _Computer Vision:_ :bulb: IMDB-WIKI-DIR (age) / AgeDB-DIR (age) / NYUD2-DIR (depth)
+- _Natural Language Processing:_ :clipboard: STS-B-DIR (text similarity score)
+- _Healthcare:_ :hospital: SHHS-DIR (health condition score)
+
+| [IMDB-WIKI-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/imdb-wiki-dir) | [AgeDB-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/agedb-dir) | [NYUD2-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/nyud2-dir) | [STS-B-DIR](https://github.com/YyzHarry/imbalanced-regression/tree/main/sts-b-dir) | SHHS-DIR |
+| :-: | :-: | :-: | :-: | :-: |
+| ![image](teaser/imdb_wiki_dir.png) | ![image](teaser/agedb_dir.png) | ![image](teaser/nyud2_dir.png) | ![image](teaser/stsb_dir.png) | ![image](teaser/shhs_dir.png) |
+
+
 ## Updates
-- __[02/18/2021]__ [ArXiv version](https://arxiv.org/abs/2102.09554) posted. The code is currently under cleaning. Please stay tuned for updates.
+- [05/2021] Paper accepted to ICML 2021 as a __Long Talk__. We have released the code and models. You can find all reproduced checkpoints via [this link](https://drive.google.com/drive/folders/1UfFJNIG-LPOMecwi1tfYzEViBiAYhNU0?usp=sharing), or go into each subfolder for models for each dataset.
+- [02/2021] [arXiv version](https://arxiv.org/abs/2102.09554) posted. Please stay tuned for updates.
 
 
 ## Citation
 If you find this code or idea useful, please cite our work:
 ```bib
-@article{yang2021delving,
+@inproceedings{yang2021delving,
   title={Delving into Deep Imbalanced Regression},
   author={Yang, Yuzhe and Zha, Kaiwen and Chen, Ying-Cong and Wang, Hao and Katabi, Dina},
-  journal={arXiv preprint arXiv:2102.09554},
+  booktitle={International Conference on Machine Learning (ICML)},
   year={2021}
 }
 ```
