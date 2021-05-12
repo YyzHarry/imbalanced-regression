@@ -4,7 +4,7 @@ This repository contains the implementation code for paper: <br>
 __Delving into Deep Imbalanced Regression__ <br>
 [Yuzhe Yang](http://www.mit.edu/~yuzhe/), [Kaiwen Zha](https://kaiwenzha.github.io/), [Ying-Cong Chen](https://yingcong.github.io/), [Hao Wang](http://www.wanghao.in/), [Dina Katabi](https://people.csail.mit.edu/dina/) <br>
 _38th International Conference on Machine Learning (ICML 2021), **Long Oral**_ <br>
-[Project Page] [[Paper](https://arxiv.org/abs/2102.09554)] [Video] [Blog]
+[[Project Page](http://dir.csail.mit.edu/)] [[Paper](https://arxiv.org/abs/2102.09554)] [Video] [Blog]
 
 <p align="center">
     <img src="teaser/overview.gif" width="500"> <br>
