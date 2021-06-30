@@ -26,7 +26,8 @@ conda activate sts
 conda install pytorch=0.4.1 cuda92 -c pytorch
 # other dependencies
 pip install -r requirements.txt
-# The current latest "overrides" dependency installed along with allennlp 0.5.0 will now raise error. We need to downgrade "overrides" version to 3.1.0
+# The current latest "overrides" dependency installed along with allennlp 0.5.0 will now raise error. 
+# We need to downgrade "overrides" version to 3.1.0
 pip install overrides==3.1.0
 ```
 
