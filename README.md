@@ -5,7 +5,7 @@ __Delving into Deep Imbalanced Regression__ <br>
 [Yuzhe Yang](http://www.mit.edu/~yuzhe/), [Kaiwen Zha](https://kaiwenzha.github.io/), [Ying-Cong Chen](https://yingcong.github.io/), [Hao Wang](http://www.wanghao.in/), [Dina Katabi](https://people.csail.mit.edu/dina/) <br>
 _38th International Conference on Machine Learning (ICML 2021), **Long Oral**_ <br>
 [[Project Page](http://dir.csail.mit.edu/)] [[Paper](https://arxiv.org/abs/2102.09554)] [[Video](https://youtu.be/grJGixofQRU)] [[Blog Post](https://towardsdatascience.com/strategies-and-tactics-for-regression-on-imbalanced-data-61eeb0921fca)] [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YyzHarry/imbalanced-regression/blob/master/tutorial/tutorial.ipynb)
-##
+___
 <p align="center">
     <img src="teaser/overview.gif" width="500"> <br>
 <b>Deep Imbalanced Regression (DIR)</b> aims to learn from imbalanced data with continuous targets, <br> tackle potential missing data for certain regions, and generalize to the entire target range.
@@ -42,9 +42,12 @@ __(3) :heavy_check_mark: New Benchmarks:__ <br>
 | :-: | :-: | :-: | :-: | :-: |
 | ![image](teaser/imdb_wiki_dir.png) | ![image](teaser/agedb_dir.png) | ![image](teaser/nyud2_dir.png) | ![image](teaser/stsb_dir.png) | ![image](teaser/shhs_dir.png) |
 
-## Apply LDS and FDS on Customized Data
+
+## Apply LDS and FDS on Other Datasets / Models
+We provide examples of how to apply LDS and FDS on other customized datasets and/or models.
+
 ### LDS
-To apply LDS on customized data, first estimate effective label distribution: 
+To apply LDS on your customized dataset, you will first need to estimate the effective label distribution: 
 ```python
 from collections import Counter
 from scipy.ndimage import convolve1d
@@ -67,7 +70,7 @@ lds_kernel_window = get_lds_kernel_window(kernel='gaussian', ks=5, sigma=2)
 # calculate effective label distribution: [Nb,]
 eff_label_dist = convolve1d(np.array(emp_label_dist), weights=lds_kernel_window, mode='constant')
 ```
-With estimated effective label distribution, a straightforward adaptation can be the loss re-weighting scheme:
+With the estimated effective label distribution, one straightforward option is to use the loss re-weighting scheme:
 ```python
 from loss import weighted_mse_loss
 
@@ -80,7 +83,7 @@ loss = weighted_mse_loss(preds, labels, weights=weights)
 ```
 
 ### FDS
-To apply FDS on customized data, first define FDS module in your network:
+To apply FDS on your customized data/model, you will first need to define the FDS module in your network:
 ```python
 from fds import FDS
 
@@ -90,11 +93,11 @@ def Network(nn.Module):
     def __init__(self, **config):
         super().__init__()
         self.feature_extractor = ...
-        self.regressor = nn.Linear(config['feature_dim'], 1)
+        self.regressor = nn.Linear(config['feature_dim'], 1)  # FDS operates before the final regressor
         self.FDS = FDS(**config)
 
     def forward(self, inputs, labels, epoch):
-        features = self.feature_extractor(inputs)   # features: [batch_size, feature_dim]
+        features = self.feature_extractor(inputs)  # features: [batch_size, feature_dim]
         # smooth the feature distributions over the target space
         smoothed_features = features    
         if self.training and epoch >= config['start_smooth']:
@@ -103,7 +106,7 @@ def Network(nn.Module):
         
         return {'preds': preds, 'features': features}
 ```
-During training, update FDS statistics after each training epoch:
+During training, you will need to update the FDS statistics after each training epoch:
 ```python
 model = Network(**config)
 
@@ -121,6 +124,7 @@ for epoch in range(num_epochs):
         model.FDS.update_last_epoch_stats(epoch)
         model.FDS.update_running_stats(training_features, training_labels, epoch)
 ```
+
 
 ## Updates
 - [06/2021] We provide a [hands-on tutorial](https://github.com/YyzHarry/imbalanced-regression/tree/main/tutorial) of DIR. Check it out! [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YyzHarry/imbalanced-regression/blob/master/tutorial/tutorial.ipynb)
