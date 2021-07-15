@@ -84,7 +84,7 @@ To apply FDS on customized data, first define FDS module in your network:
 ```python
 from fds import FDS
 
-config = dict(feature_dim=..., start_update=..., start_smooth=..., kernel='gaussian', ks=5, sigma=2)
+config = dict(feature_dim=..., start_update=0, start_smooth=1, kernel='gaussian', ks=5, sigma=2)
 
 def Network(nn.Module):
     def __init__(self, **config):
@@ -103,7 +103,7 @@ def Network(nn.Module):
         
         return {'preds': preds, 'features': features}
 ```
-During training, update FDS statistics after each epoch:
+During training, update FDS statistics after each training epoch:
 ```python
 model = Network(**config)
 
@@ -114,8 +114,9 @@ for epoch in range(num_epochs):
 
     # update FDS statistics after each training epoch
     if epoch >= config['start_update']:
-        # collect features for all training samples
-        # training_features: [num_samples, feature_dim], training_labels: [num_samples]
+        # collect features and labels for all training samples
+        ...
+        # training_features: [num_samples, feature_dim], training_labels: [num_samples,]
         training_features, training_labels = ..., ...
         model.FDS.update_last_epoch_stats(epoch)
         model.FDS.update_running_stats(training_features, training_labels, epoch)
