@@ -63,7 +63,7 @@ bin_index_per_label = [get_bin_idx(label) for label in labels]
 # "Nb" is the number of bins
 Nb = max(bin_index_per_label) + 1
 num_samples_of_bins = dict(Counter(bin_index_per_label))
-emp_label_dist = [num_samples_of_bins.get(i, 0) for i in Nb]
+emp_label_dist = [num_samples_of_bins.get(i, 0) for i in range(Nb)]
 
 # lds_kernel_window: [ks,], here for example, we use gaussian, ks=5, sigma=2
 lds_kernel_window = get_lds_kernel_window(kernel='gaussian', ks=5, sigma=2)
